@@ -1,7 +1,6 @@
 """Sincroniza | respaldo de archivos"""
 
 import argparse
-import os
 
 from helpers import backup
 
@@ -21,6 +20,10 @@ def accept_params():
     )
     parser.add_argument(
         "-backup", default=False, help="Ejecuta el respaldo aplicando cambios (Anula modo: -test)", action="store_true"
+    )
+    parser.add_argument(
+        "-exclude", help="Agregar un patron para excluir selectivamente archivos o directorios",
+        action="store_true"
     )
 
     args = parser.parse_args()

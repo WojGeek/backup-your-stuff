@@ -1,76 +1,73 @@
 """Exclude"""
 
-import sys
 import json
 
-file_name = "exclude.json"
 
+class Exclude:
+    """Exclude Class | Clase Exclude :
 
-def load_json(file_name):
-    """Cargar contenido del archivo"""
+    Parameter:
+      argument (string):  File path
 
-    try:
-        with open(file_name, "r", encoding="utf-8") as json_file:
-            datos = json.load(json_file)
+    """
 
-    except FileNotFoundError:
-        print(f"El archivo {file_name} no existe")
-        datos = set()
-    return datos
+    def __init__(self, file_path):
+        self._file_path = file_path
+        self._excluded_items = set()
+        self.load_items()
 
+    @property
+    def file_path(self):
+        """Excludes files path"""
+        return self._file_path
 
-def save_json(datos, file_name):
-    """Save JSON"""
-    with open(file_name, "w",  encoding="utf-8") as file:
-        json.dump(list(datos), file)
+    @file_path.setter
+    def file_path(self, new_path):
+        self._file_path = new_path
+        self.load_items()
 
+    def load_items(self):
+        """Load excludes"""
 
-def list_files(file_name):
-    data = load_json(file_name)
+        try:
+            with open(self._file_path, "r", encoding="utf-8") as file:
+                self._excluded_items = set(json.load(file))
+                # self._excluded_items = set(file.read())
 
-    for i in data:
-        print(f"{i}")
+        except FileNotFoundError:
+            print(f"El archivo {self._file_path} no existe. Se creará uno nuevo..!")
 
+    def save_items(self):
+        """Save excludes"""
 
-def add_exclude(pattern):
-    """Exclude files or directory"""
+        with open(self._file_path, "w", encoding="utf-8") as file:
+            json.dump(list(self._excluded_items), file)
+            # file.write("\n".join(self._excluded_items))
 
-    try:
-        data = load_json(file_name)
+    def exclude(self, item):
+        """Add exclude pattern"""
+        if item in self._excluded_items:
+            print(f"Exclude ya existe: {item}")
+        else:
+            self._excluded_items.add(item)
+            print(f"Agregado a la lista de exclusión: {item}")
+            self.save_items()
 
-        new_data = set(data)
+    def remove(self, item):
+        """Remove exclude"""
+        if item in self._excluded_items:
+            self._excluded_items.remove(item)
+            self.save_items()
+            print(f"Exclude eliminado: {item} ")
+        else:
+            print(f"No se encontró en la lista de exclusión: {item}")
 
-        print('Datatype: ', type(new_data))
+    def listing(self):
+        """
+        List of exclusions (sorted)
+        """
 
-        new_data.add(pattern)
-
-        save_json(new_data, file_name)
-
-    except ValueError:
-        print("Error: Adding a new exclude")
-
-
-def main(delete_exc, list_exc, exclude_pattern):
-    """Gestión de opciones  para exclusiones"""
-
-    # listing
-    if list_exc:
+        # print(type(self._excluded_items))
         print("-" * 3 + " Listado de exclusiones " + "-" * 3)
-        list_files(file_name)
-
-    # adding exclude
-    if exclude_pattern != 'None':
-        add_exclude(exclude_pattern)
-        list_files(file_name)
-        
-    
-    # delete exclude     
-    if delete_exc:
-        print('Delete exclude: ',delete_exc)
-
-        # print("=" * 3 + " Report " + "=" * 3)
-
-        # print(f"- Elemento agregado: {new_value } ")
-        # print('- Elementos en archivos: ', len(new_data))
-
-        # print(data)
+        for item in sorted(self._excluded_items):
+            print(item)

@@ -1,43 +1,65 @@
 """Sincroniza | respaldo de archivos"""
 
 import argparse
+import sys
 
-from helpers import exclude
+from helpers.exclude import Exclude
 
 
 def exclude_options():
-    """Recibe parámetros de origen y destino"""
-    parser = argparse.ArgumentParser(
-        description="Exclusiones selectivas de archivos y/o directorios de respaldos"
-    )
+    """Gestion de exclude para respaldo de archivos"""
 
-    parser.add_argument(
-        "-list", help="Listar las exclusiones", action="store_true"
-    )
+    msg = "Exclusiones selectivas de archivos y/o directorios de respaldos"
+    parser = argparse.ArgumentParser(description=msg)
 
-    # group = parser.add_mutually_exclusive_group()
+    msg = "Listar las exclusiones"
+    parser.add_argument("--listing", help=msg, action="store_true")
 
-    parser.add_argument(
-        "-add", help="Agregar la referencia de un archivo o directorio a excluir")
-    parser.add_argument("-delete", help="Quitar una referencia de exclusión")
+    group = parser.add_mutually_exclusive_group()
+
+    msg = "Agregar la referencia del archivo o directorio a excluir"
+    # parser.add_argument("--exclude", type = str, help = msg)
+    group.add_argument("--exclude", type=str, help=msg)
+
+    msg = "Quitar una referencia de exclusión"
+    # parser.add_argument("--remove", help = msg)
+    group.add_argument("--remove", help=msg)
 
     args = parser.parse_args()
 
-    return args.delete, args.list, args.add
+    if not any(vars(args).values()):
+        parser.print_help()
+        # parser.print_usage()
+        sys.exit(0)
+
+    # try:
+    #     args = parser.parse_args()
+    # except SystemExit:
+    #     parser.print_usage()
+    #     sys.exit(0)
+
+    return args.listing, args.exclude, args.remove
 
 
 if __name__ == "__main__":
 
-    delete_exclude, list_excludes, add_exclude = exclude_options()
+    # list_excludes = ''
+    # delete_exclude = 'False'
+    # add_exclude = ''
 
-    print("LIST", list_excludes)
-    print("ADD", list_excludes)
-    print("Delete:", delete_exclude)
+    # exclude_options()
+    listing, add_pattern, del_pattern = exclude_options()
 
-    if delete_exclude:
-   
-        
-    if add_exclude:
-        # exclude.main(delete_exclude, list_excludes, add_exclude)
-        print("Add: ", delete_exclude)
-        
+    # instancia de la clase Exclude
+
+    FILE_PATH = "exclude.json"
+    excluder = Exclude(FILE_PATH)
+
+    if add_pattern is not None:
+        excluder.exclude(add_pattern)
+
+    if del_pattern is not None:
+        excluder.remove(del_pattern)
+
+    if listing:
+        excluder.listing()

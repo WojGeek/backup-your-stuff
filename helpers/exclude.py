@@ -37,6 +37,8 @@ class Exclude:
         except FileNotFoundError:
             print(f"El archivo {self._file_path} no existe. Se creará uno nuevo..!")
 
+        return self._excluded_items
+    
     def save_items(self):
         """Save excludes"""
 

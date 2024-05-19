@@ -1,49 +1,66 @@
 """Sincroniza | respaldo de archivos"""
 
 import argparse
+import sys
 
 from helpers import backup
+from helpers.exclude import Exclude
 
 
 def accept_params():
     """Recibe parámetros de origen y destino"""
-    parser = argparse.ArgumentParser(
-        description="Respaldo-sincronización de archivos")
+
+    msg = "Backup your stuff :: Respaldo-sincronización de archivos"
+    parser = argparse.ArgumentParser(description=msg)
 
     parser.add_argument("origen", help="Ruta del directorio origen", type=str)
     parser.add_argument("destino", help="Ruta de disco destino", type=str)
-    parser.add_argument(
-        "-test", default=True, help="Ejecuta sin realizar cambios (predeterminado)", action="store_true"
-    )
-    parser.add_argument(
-        "-verbose", default=False, help="Muestra el progreso", action="store_true"
-    )
-    parser.add_argument(
-        "-backup", default=False, help="Ejecuta el respaldo aplicando cambios (Anula modo: -test)", action="store_true"
-    )
-    parser.add_argument(
-        "-exclude", help="Agregar un patron para excluir selectivamente archivos o directorios",
-        action="store_true"
-    )
+
+    msg = "Ejecuta sin realizar cambios (predeterminado)"
+    parser.add_argument("--test", default=True, help=msg, action="store_true")
+
+    msg = "Muestra el progreso"
+    parser.add_argument("--verbose", default=False,
+                        help=msg, action="store_true")
+
+    msg = "Ejecuta el respaldo aplicando cambios (Anula modo: -test)"
+    parser.add_argument("--backup", default=False,
+                        help=msg, action="store_true")
+
+    msg = "Aplicar exclusiones durante el respaldo"
+    parser.add_argument("--exclude", default=False,
+                        help=msg, action="store_true")
 
     args = parser.parse_args()
 
-    return args.origen, args.destino, args.test, args.verbose, args.backup
+    all_arguments = list(args.origen, args.destino,
+                         args.test, args.verbose, args.backup,
+                         args.exclude)
+
+    return all_arguments
 
 
 if __name__ == "__main__":
-    # os.system('clear')
-    source_path, destination_path, testing, verbosity, create_backup = accept_params()
-    # print(type(source_path))
-    # print(type(destination_path))
-    # print(type(testing))
-    # print(type(verbosity))
-    # print(type(create_backup))
 
-    # print(source_path)
-    # print(dpestination_path)
-    # print(testing)
-    # print(verbosity)
+    source_path, destination_path, testing, verbosity, create_backup, excluding = accept_params()
 
-    backup.main(source_path, destination_path,
-                testing, verbosity, create_backup)
+    # TODO:  declarar var exclude
+    # list of excludes
+    # FILE_PATH = "exclude.json"
+    # excluder = Exclude(FILE_PATH)
+    # excludes = excluder.load_items()
+    # print(excludes)
+
+    EXCLUDE = Exclude("exclude.json").load_items()
+
+    # TODO:  load all exclude
+    # TODO:  enviar exclude as argment
+
+    arguments = (source_path, destination_path, testing,
+                 verbosity, create_backup, excluding, EXCLUDE)
+
+    print('EXCLUDE: ', excluding)
+
+    backup.main(arguments)
+
+    # print(excludes)

@@ -4,7 +4,6 @@ He desarrollado esta herramienta con dos objetivos en mente. El primero y más i
 
 El segundo objetivo es contar con una herramienta confiable y eficiente cuando necesite realizar respaldos de mis asuntos. Por otro lado, proveer un soporte técnico a clientes y garantizar la recuperación de la data. 
 
-Otra
 
 ### Características
 
@@ -14,9 +13,9 @@ Otra
 - Configurable para automatizar respaldos desde un cron de Linux.
 
 
-#### Antes de usar
+#### Requerimientos
 
-Instalar Poetry
+- Instalar Poetry
 
 > Linux, macOS, Windows (WSL)
 

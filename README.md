@@ -65,7 +65,7 @@ El segundo objetivo fue optimizar la herramienta que había  utilizado para prov
    poetry shell
    poetry update
 ```
-
+<image src="/img/poetry-update.png" alt="update-components" border="7px solid green" width="551">
 
 
 #### Exclusiones

@@ -51,6 +51,8 @@ El segundo objetivo fue optimizar la herramienta que había  utilizado para prov
    pip install poetry 
 ```
 
+## Uso en Linux, Windows 10/11, WSL
+
 ## Descargar la aplicación
 
 ```

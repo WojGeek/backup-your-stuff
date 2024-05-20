@@ -1,4 +1,4 @@
-## Backup your stuff
+# Backup your stuff
 
 He desarrollado esta herramienta con dos objetivos en mente. 
 
@@ -6,11 +6,11 @@ El primero lugar y de mucha importancia para mi formación como DevOps, es prose
 
 El segundo objetivo fue optimizar la herramienta que había  utilizado para proveer a mis clientes, respaldo y  recuperación de sus datos. 
 
-### ¿Qué ofrece esta herramienta?
+## ¿Qué ofrece esta herramienta?
 
 **Realizar copias de seguridad de manera  eficiente y confiable.**  Porque fue desarrollada con componentes actualizados del  lenguaje Python, y una interfaz minimalista y amigable. Además, he comprobado que los resultados  de la copias en la consola de comandos son consistentes y más rápido en comparación a una interfaz gráfica.
 
-### Características
+## Características
 
 - Manejo de exclusiones.
 - Respaldo en modo de prueba para comprobación.
@@ -22,9 +22,9 @@ El segundo objetivo fue optimizar la herramienta que había  utilizado para prov
 - Configurable para automatizar respaldos desde un cron de Linux.
 
 
-#### Requerimientos para Windows 10/11
+## Requerimientos para Windows 10/11
 
-#### 1. Instalar Python
+### 1. Instalar Python
 
 ```
    https://www.python.org/downloads/windows/ 
@@ -37,13 +37,13 @@ El segundo objetivo fue optimizar la herramienta que había  utilizado para prov
 <image src="/img/pywin2.png" alt="Step 3 install" border="5px solid green" width="551">
 
 
-#### 2. Instalar Git Bash
+### 2. Instalar Git Bash
 
 ```
    https://git-scm.com/download/win
 ```
 
-#### 3. Instalar Poetry
+### 3. Instalar Poetry
 
 
 #### Descargar 

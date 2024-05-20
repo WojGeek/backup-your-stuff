@@ -27,7 +27,7 @@ El segundo objetivo fue optimizar la herramienta que había  utilizado para prov
 ### 1. Instalar Python
 
 ```
-   ### https://www.python.org/downloads/windows/ 
+   https://www.python.org/downloads/windows/ 
 ```
 
 
@@ -45,16 +45,28 @@ El segundo objetivo fue optimizar la herramienta que había  utilizado para prov
 
 ### 3. Instalar Poetry
 
-
-#### Descargar 
+   De antemano abrir una terminal con Git Bash
 
 ```
+   pip install poetry 
 ```
 
+## Descargar la aplicación
+
+```
   git clone https://github.com/WojGeek/backup-your-stuff.git
 
+```
+
+## Instalar componentes
 
 ```
+   cd backup-your-stuff/
+   poetry shell
+   poetry update
+```
+
+
 
 #### Exclusiones
 

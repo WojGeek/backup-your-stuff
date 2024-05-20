@@ -70,25 +70,25 @@ El segundo objetivo fue optimizar la herramienta que había  utilizado para prov
 <image src="/img/poetry-update.png" alt="update-components" border="7px solid green" width="551">
 
 
-#### Exclusiones
+## Agregar Exclusiones
 
    - Para agregar los EXCLUDE que evitarán el respaldo de directorios innecesarios.
 
 ```
-   $ python exclude.py
+   python exclude.py
 
 ```
 
-
-#### Sincronización de archivos (respaldo)
-
-#####  > Let the party begins  ;)
-
-   -  Ejecutar la aplicación de respaldo
-
-```
-  $ python backup.py
+## Inciar una copia de resguardo
 
 
 ```
+  python backup.py
 
+```
+
+> Espero sea de utilidad!
+
+ Comentarios a: ppwj@yahoo.com
+
+> Toma un café y dale play..!  ;)

@@ -31,7 +31,7 @@ El segundo objetivo fue optimizar la herramienta que había  utilizado para prov
 ```
 >  Necesario seguir la instalación según las imagenes. 
 
-![py-install-1](https://github.com/WojGeek/backup-your-stuff/img/pywin0.png)
+![py-install-1](/img/pywin0.png)
 
 
 2. Instalar Git Bash

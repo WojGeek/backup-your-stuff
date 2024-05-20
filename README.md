@@ -31,10 +31,10 @@ El segundo objetivo fue optimizar la herramienta que había  utilizado para prov
 ```
 
 
-<image src="/img/pywin0.png" alt="Step 1 install" border="5px solid green" width="551">
+<image src="/img/pywin0.png" alt="Step 1 install" border="5px solid green" width="560">
 
-<image src="/img/pywin1.png" alt="Step 2 install" border="5px solid green" width="551">
-<image src="/img/pywin2.png" alt="Step 3 install" border="5px solid green" width="551">
+<image src="/img/pywin1.png" alt="Step 2 install" border="5px solid green" width="560">
+<image src="/img/pywin2.png" alt="Step 3 install" border="5px solid green" width="560">
 
 
 ### 2. Instalar Git Bash
@@ -67,37 +67,37 @@ El segundo objetivo fue optimizar la herramienta que había  utilizado para prov
    poetry shell
    poetry update
 ```
-<image src="/img/poetry-update.png" alt="update-components" border="7px solid green" width="551">
+<image src="/img/poetry-update.png" alt="update-components" border="7px solid green" width="560">
 
 
 ## Agregar Exclusiones
 
-> La aplicación ya viene con las pilas cargadas. Hay una lista de exclusiones >precargadas que contribuyen a obtener una transferencia de datos limpia y >segura. Lográndose menos espacio de disco para completar una copia de >seguridad.
+> La aplicación ya viene con las pilas cargadas. Hay una lista de exclusiones precargadas que contribuyen a obtener una transferencia de datos limpia y segura. Lográndose menos espacio de disco para completar una copia de seguridad.
 
 ### ¿Qué se excluye?
 
->Elementos no deseados, aplicaciones y directorios temporales que no tiene >utilidad y ocupan muchísimo espacio de disco.
+>Elementos no deseados, aplicaciones y directorios temporales que no tiene utilidad y ocupan muchísimo espacio de disco.
 
-### Ejecución 
 
 ```
    python exclude.py
 
 ```
 ## Screenshot de la aplicación 'exclude.py'
-<image src="/img/exclude.png" alt="exclude" border="7px solid green" width="551">
+<image src="/img/exclude.png" alt="exclude" border="7px solid green" width="560">
 
 ## Inciar una copia de resguardo
 
-> La aplicación se ejecuta de manera predeterminada en modo TEST. De manera, > > que no realiza cambios, hasta que el usuario se familiarice con su uso antes > de realizar una copia real.
+> La aplicación se ejecuta de manera predeterminada en modo TEST. De manera,  que no realiza cambios, hasta que el usuario se familiarice con su uso antes de realizar una copia real.
 
-## Screenshot de backup
-<image src="/img/backup.png" alt="backup" border="7px solid green" width="551">
 
 ```
   python backup.py
 
 ```
+## Screenshot de backup.py
+<image src="/img/backup.png" alt="backup" border="7px solid green" width="560">
+
 
 > Espero sea de utilidad!
 

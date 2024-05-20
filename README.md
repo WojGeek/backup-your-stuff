@@ -1,49 +1,54 @@
 ## Backup your stuff
 
-He desarrollado esta herramienta con dos objetivos en mente. El primero y más importante es el ensayo de programación con Python. Aprender más acerca de automatizar cosas y lograr que el trabajo en la consola de comandos sea eficiente y productivo.
+He desarrollado esta herramienta con dos objetivos en mente. 
 
-El segundo objetivo es contar con una herramienta confiable y eficiente cuando necesite realizar respaldos de mis asuntos. Por otro lado, proveer un soporte técnico a clientes y garantizar la recuperación de la data. 
+El primero lugar y de mucha importancia para mi formación como DevOps, es proseguir con los  ensayos de programación con Python a fin de mejorar mis conocimientos en desarrollar aplicaciones y de automatizar tareas en servidores. 
 
+El segundo objetivo fue optimizar la herramienta que había  utilizado para proveer a mis clientes, respaldo y  recuperación de sus datos. 
+
+### ¿Qué ofrece esta herramienta?
+
+**Realizar copias de seguridad de manera  eficiente y confiable.**  Porque fue desarrollada con componentes actualizados del  lenguaje Python, y una interfaz minimalista y amigable. Además, he comprobado que los resultados  de la copias en la consola de comandos son consistentes y más rápido en comparación a una interfaz gráfica.
 
 ### Características
 
 - Manejo de exclusiones.
 - Respaldo en modo de prueba para comprobación.
+- Copiado de archivos a una nueva carpeta en la misma computadora.
+- Copiado a un almacenamiento externo, por ejemplo: una unidad USB.
+- Copiado en un segundo disco para copias de seguridad.
+- Respaldo en almacenamientos conectados a la red.
 - Visualización simple o ampliada de la salida durante el respaldo.
 - Configurable para automatizar respaldos desde un cron de Linux.
 
 
-#### Requerimientos
+#### Requerimientos para Windows 10/11
 
-- Instalar Poetry
-
-> Linux, macOS, Windows (WSL)
+1. Instalar Python
 
 ```
-     $ curl -sSL https://install.python-poetry.org | python3 -
+   https://www.python.org/downloads/windows/ 
+```
+>  Necesario seguir la instalación según las imagenes. 
 
-``` 
+![py-install-1](https://github.com/WojGeek/backup-your-stuff/img/pywin0.png)
 
-> Windows Powershell
+
+2. Instalar Git Bash
 
 ```
-(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
-
+   https://git-scm.com/download/win
 ```
 
-Desinstalar Poetry 
+3. Instalar Poetry
 
-```
-curl -sSL https://install.python-poetry.org | python3 - --uninstall
-curl -sSL https://install.python-poetry.org | POETRY_UNINSTALL=1 python3 -
-```
 
 #### Descargar 
 
-
+```
 ```
 
-  $  git clone https://github.com/WojGeek/backup-your-stuff.git
+  git clone https://github.com/WojGeek/backup-your-stuff.git
 
 
 ```
@@ -69,9 +74,4 @@ curl -sSL https://install.python-poetry.org | POETRY_UNINSTALL=1 python3 -
 
 
 ```
-
-
-
-
-
 

@@ -33,7 +33,7 @@ El segundo objetivo fue optimizar la herramienta que había  utilizado para prov
 
 ![py-install-1](/img/pywin0.png)
 
-<image src="/img/pywin1.png" alt="Opciones de install" border="5px solid green" width="500">
+<image src="/img/pywin1.png" alt="Opciones de install" border="5px solid green" width="551">
 
 
 2. Instalar Git Bash

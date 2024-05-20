@@ -29,11 +29,13 @@ El segundo objetivo fue optimizar la herramienta que había  utilizado para prov
 ```
    https://www.python.org/downloads/windows/ 
 ```
->  Necesario seguir la instalación según las imagenes. 
+>  Prosiga la instalación según las imagenes. 
 
-![py-install-1](/img/pywin0.png)
 
-<image src="/img/pywin1.png" alt="Opciones de install" border="5px solid green" width="551">
+<image src="/img/pywin0.png" alt="Step 1 install" border="5px solid green" width="551">
+
+<image src="/img/pywin1.png" alt="Step 2 install" border="5px solid green" width="551">
+<image src="/img/pywin2.png" alt="Step 3 install" border="5px solid green" width="551">
 
 
 2. Instalar Git Bash

@@ -14,31 +14,40 @@ El segundo objetivo es poder dar uso a una  herramienta confiable y eficiente pa
 
 - Instalar Poetry
 
-'''
+```
+    $  cd ~/
+    $  git clone https://github.com/WojGeek/DockerEase.git
 
-'''
+``` 
 
 
 #### Descargar 
 
-'''
+
+```
 
   $  git clone https://github.com/WojGeek/backup-your-stuff.git
 
-'''
+
+```
 
 #### Exclusiones
 
-'''
+
+```
    $ python exclude.py
-'''
+
+```
 
 
 #### Sincronización de archivos (respaldo)
 
-'''
+
+```
   $ python backup.py
-'''
+
+
+```
 
 
 

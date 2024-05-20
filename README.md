@@ -1,25 +1,43 @@
 ## Backup your stuff
 
-He desarrollado esta herramienta con dos objetivos en mente. El primero y más importante es el ensayo de programación con Python y, aprender más acerca de automatizar cosas y hacer que el trabajo en la consola de comandos sea eficiente y minimalista.
+He desarrollado esta herramienta con dos objetivos en mente. El primero y más importante es el ensayo de programación con Python. Aprender más acerca de automatizar cosas y lograr que el trabajo en la consola de comandos sea eficiente y productivo.
 
-El segundo objetivo es poder dar uso a una  herramienta confiable y eficiente para realizar respaldos de manera inteligente o quizas sea más conveniente decir; relizar un backup rápido y confiable. 
+El segundo objetivo es contar con una herramienta confiable y eficiente cuando necesite realizar respaldos de mis asuntos. Por otro lado, proveer un soporte técnico a clientes y garantizar la recuperación de la data. 
+
+Otra
 
 ### Características
+
 - Manejo de exclusiones.
 - Respaldo en modo de prueba para comprobación.
 - Visualización simple o ampliada de la salida durante el respaldo.
+- Configurable para automatizar respaldos desde un cron de Linux.
 
 
 #### Antes de usar
 
-- Instalar Poetry
+Instalar Poetry
+
+> Linux, macOS, Windows (WSL)
 
 ```
-    $  cd ~/
-    $  git clone https://github.com/WojGeek/DockerEase.git
+     $ curl -sSL https://install.python-poetry.org | python3 -
 
 ``` 
 
+> Windows Powershell
+
+```
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+
+```
+
+Desinstalar Poetry 
+
+```
+curl -sSL https://install.python-poetry.org | python3 - --uninstall
+curl -sSL https://install.python-poetry.org | POETRY_UNINSTALL=1 python3 -
+```
 
 #### Descargar 
 

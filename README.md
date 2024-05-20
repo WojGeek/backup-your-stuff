@@ -24,12 +24,11 @@ El segundo objetivo fue optimizar la herramienta que había  utilizado para prov
 
 #### Requerimientos para Windows 10/11
 
-1. Instalar Python
+#### 1. Instalar Python
 
 ```
    https://www.python.org/downloads/windows/ 
 ```
->  Prosiga la instalación según las imagenes. 
 
 
 <image src="/img/pywin0.png" alt="Step 1 install" border="5px solid green" width="551">
@@ -38,13 +37,13 @@ El segundo objetivo fue optimizar la herramienta que había  utilizado para prov
 <image src="/img/pywin2.png" alt="Step 3 install" border="5px solid green" width="551">
 
 
-2. Instalar Git Bash
+#### 2. Instalar Git Bash
 
 ```
    https://git-scm.com/download/win
 ```
 
-3. Instalar Poetry
+#### 3. Instalar Poetry
 
 
 #### Descargar 

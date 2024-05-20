@@ -1,10 +1,12 @@
-"""Módulo principal"""
+"""Módulo principal : Backup your stuff
+
+"""
 
 import os
-
-# import shutil
 import sys
 import subprocess
+
+from helpers.exclude import Exclude
 
 
 def check_disks(directory):
@@ -13,30 +15,68 @@ def check_disks(directory):
     if not os.path.exists(directory):
         print(f"• Directorio no encontrado: {directory}")
         sys.exit()
-        
-def check_destination_disk(destination_dir):
-    """Create the subfolder if doesn't exist"""
-    # subfolder_path = os.path.join(destination_dir, )
-    pass
-    # TODO
 
 
-def main(source_dir, destination_dir, is_testing, is_verbose, create_backup):
-    """Funcion principal"""
+def suggest_destination(source):
+    """
+    Create the subfolder from source directory
 
+    """
+    dest_dir = os.path.basename(os.path.normpath(source))
+
+    return dest_dir
+
+
+def make_separate_list_exclusions(_command):
+    """make a list of excludes"""
+
+    exclude_list = Exclude("exclude.json").load_items()
+
+    # args["patterns"] = EXCLUDE
+    command_plus_args = _command
+    for directory in exclude_list:
+        # print(directory)
+        command_plus_args.append("--exclude")
+        command_plus_args.append(directory)
+
+    return command_plus_args
+
+
+def main(args):
+    # def main(source_dir, destination_dir, is_testing, is_verbose, create_backup, excludes=False):
+    """Main - Sync / Files Backup
+
+    Parameter:
+
+        args (dict):
+
+            args.origen: source directory
+            .
+            .
+            args.patterns:  list of excludes
+
+    """
+
+    (source_dir, destination_dir, is_testing, is_verbose, is_backup, excluding) = (
+        args.values()
+    )
+
+    # Directories
     check_disks(source_dir)
-    #check_disks(destination_dir)
-    #  •
+
+    # Create destination
+    destination_dir = os.path.join(destination_dir, suggest_destination(source_dir))
 
     # To avoid data loss by accidentally swapping the SOURCE and DESTINATION arguments
-    dont_make_changes = "-n"
+    dont_make_changes = "--dry-run"
     # '-n' as default
 
     # to reduce logging verbosity. -q as default
-    verbose = "-q"
+    verbose = "--quiet"
 
     # Default
     cmd = ["rsync-system-backup"]
+
     cmd.append(source_dir)
     cmd.append(destination_dir)
 
@@ -45,47 +85,63 @@ def main(source_dir, destination_dir, is_testing, is_verbose, create_backup):
 
     msg = ["Default", cmd]
 
-    print(f"Pass 1: {msg[0]}: {msg[1]}")
+    print(f"CMD Set 1: {msg[0]}: {msg[1]}")
 
-    if create_backup:
+    if is_backup:
         # start backup
-        cmd.remove("-n")
-        cmd.append("-b")
-        msg[0] = 'Backup'
-        print(f"Pass 2: {msg[0]}: {msg[1]}")
+        cmd.remove("--dry-run")
+        cmd.append("--backup")
+        msg[0] = "Backup"
+        print(f"CMD Set 2: {msg[0]}: {msg[1]}")
 
         if is_verbose:
-            cmd.remove("-q")
-            cmd.append("-v")
+            cmd.remove("--quiet")
+            cmd.append("--verbose")
             msg[0] = "Backup w/ more verbosity"
         else:
             # cmd.append('-q')
             msg[0] = "Backup w/ less verbosity"
 
-        print(f"Pass 3: {msg[0]}: {msg[1]}")
+        print(f"Cmd set 3: {msg[0]}: {msg[1]}")
     else:
         # testing mode
         msg[0] = "Test the backup"
 
         if is_testing and is_verbose:
-            cmd.remove("-q")
-            cmd.append("-v")
-            print(f"Pass 4: {msg[0]}: {msg[1]}")
+            cmd.remove("--quiet")
+            cmd.append("--verbose")
+            print(f"CMD Set 4: {msg[0]}: {msg[1]}")
 
+    # --exclude=EXCLUDE_PATTERN
+    if excluding:
+        cmd = make_separate_list_exclusions(cmd)
 
+    # Let the party begin   ;)
     try:
-        # do_start_backup = subprocess.run(
-        #     ["rsync-system-backup", sdir, ddir, arg1, arg2], check=False, shell=False)
-        do_start_backup = subprocess.run(cmd, check=False, shell=False)
-        # do_start_backup = subprocess.run([cmd], check=False, shell=False)
-        # do_start_backup = subprocess.run(["rsync"], shell=False, check=False)
+
+        if is_verbose:
+            do_start_backup = subprocess.run(cmd, check=False, shell=False)
+        else:
+            do_start_backup = subprocess.run(
+                cmd, check=False, shell=False, stdout=subprocess.DEVNULL
+            )
+
     except subprocess.CalledProcessError as err:
         print("Comando falló con el error: ", err.returncode)
     else:
         print("returncode: ", do_start_backup.returncode)
-        print(f"stdout is {do_start_backup.stdout}")
+        # print(f"stdout is {do_start_backup.stdout}")
         print(f"stderr is {do_start_backup.stderr}")
 
-    # print(dont_make_changes, verbose, start_backup)
+    status = (
+        "Ejecutado con éxito" if do_start_backup.returncode == 0 else "- Hubo fallos"
+    )
+    print(status)
+    print("---")
+    if excluding:
+        print(
+            "- Exclude files matching PATTERN Applied.\n\t More info, check: python exclude.py "
+        )
 
-    # print(cmd)
+    if not is_testing:
+        print("- Check backup at: ", destination_dir)

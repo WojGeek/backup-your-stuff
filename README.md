@@ -51,6 +51,7 @@ curl -sSL https://install.python-poetry.org | POETRY_UNINSTALL=1 python3 -
 
 #### Exclusiones
 
+   Para agregar los EXCLUDE que evitarán el respaldo de directorios innecesarios.
 
 ```
    $ python exclude.py
@@ -60,6 +61,9 @@ curl -sSL https://install.python-poetry.org | POETRY_UNINSTALL=1 python3 -
 
 #### Sincronización de archivos (respaldo)
 
+    > Let the party begins  ;)
+
+    Ejecutar la aplicación de respaldo
 
 ```
   $ python backup.py

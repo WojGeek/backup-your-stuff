@@ -146,4 +146,5 @@ def main(args):
     if not is_testing:
         print("- Check backup at: ", destination_dir)
 
-     print('Done! ✨')
+    
+    print('Done! ✨')

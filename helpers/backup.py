@@ -134,14 +134,16 @@ def main(args):
         print(f"stderr is {do_start_backup.stderr}")
 
     status = (
-        "Ejecutado con éxito" if do_start_backup.returncode == 0 else "- Hubo fallos"
+        "Ejecutado sin fallos" if do_start_backup.returncode == 0 else "- Hubo fallos"
     )
     print(status)
     print("---")
     if excluding:
         print(
-            "- Exclude files matching PATTERN Applied.\n\t More info, check: python exclude.py "
+            "- Exclude PATTERN Applied.\n\t More info, run: python exclude.py "
         )
 
     if not is_testing:
         print("- Check backup at: ", destination_dir)
+
+     print('Done! ✨')
